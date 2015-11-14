@@ -1,6 +1,6 @@
 import React     from 'react';
 import update    from 'react-addons-update';
-import { Router, History }    from 'react-router';
+import { History }    from 'react-router';
 import Reflux    from 'reflux';
 import Quill     from 'quill';
 import Moment    from 'moment';

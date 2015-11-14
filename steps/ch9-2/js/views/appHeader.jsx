@@ -2,7 +2,7 @@
 
 import React        from 'react';
 import Reflux       from 'reflux';
-import { Router, Link }       from 'react-router';
+import { Link, History }       from 'react-router';
 
 import Actions      from 'appRoot/actions';
 import SessionStore from 'appRoot/stores/sessionContext';
@@ -10,7 +10,7 @@ import SessionStore from 'appRoot/stores/sessionContext';
 export default React.createClass({
 	mixins: [
 		Reflux.connect(SessionStore, 'session'),
-		Router.History
+		History
 	],
 	logOut: function () {
 		Actions.logOut();
@@ -18,7 +18,7 @@ export default React.createClass({
 		this.history.pushState('/');
 	},
 	search: function () {
-		var searchVal = this.refs.search.getDOMNode().value;
+		var searchVal = this.refs.search.value;
 		Actions.search(searchVal);
 	},
 	render: function () {

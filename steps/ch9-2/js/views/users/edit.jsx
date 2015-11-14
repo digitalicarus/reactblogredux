@@ -1,7 +1,7 @@
 import React     from 'react'; // react with addons
 import update    from 'react-addons-update';
 import Reflux    from 'reflux';
-import Router    from 'react-router';
+import { History } from 'react-router';
 
 import BasicInput   from 'appRoot/components/basicInput';
 import Actions      from 'appRoot/actions';
@@ -13,7 +13,7 @@ import {formMixins} from 'appRoot/mixins/utility';
 export default React.createClass({
 	mixins: [
 		Reflux.connect(UserStore, 'users'),
-		Router.Navigation,
+		History,
 		formMixins
 	],
 	getInitialState: function () {

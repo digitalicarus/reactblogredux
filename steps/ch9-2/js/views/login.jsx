@@ -1,6 +1,6 @@
 import React   from 'react';
 import Reflux  from 'reflux';
-import { Router, History }  from 'react-router';
+import { History }  from 'react-router';
 
 import BasicInput   from 'appRoot/components/basicInput';
 import Actions      from 'appRoot/actions';
@@ -20,7 +20,6 @@ export default React.createClass({
 			});
 		e.preventDefault(); 
 		e.stopPropagation(); 
-				debugger;
 
 		Actions.login(detail.username, detail.password)
 			.then(function () {

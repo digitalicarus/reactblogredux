@@ -1,6 +1,5 @@
 import React      from 'react';
 import Reflux     from 'reflux';
-import Router     from 'react-router';
 import Moment     from 'moment';
 
 import UserList   from 'appRoot/views/users/list';

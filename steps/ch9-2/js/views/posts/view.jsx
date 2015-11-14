@@ -1,6 +1,6 @@
 import React            from 'react';
 import Reflux           from 'reflux';
-import { Router, Link } from 'react-router';
+import { Link } from 'react-router';
 
 import ClassNames  from 'classnames';
 import Moment      from 'moment';

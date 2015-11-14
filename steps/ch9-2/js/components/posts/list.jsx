@@ -73,7 +73,7 @@ export default React.createClass({
 		).then(function (results) {
 			var data = results.results;
 
-			// make sure we put the data where it goes.
+			// make sure we put the data in the correct location in the array
 			// if many results resolved at once trust the request data for start and end
 			// instead of some internal state
 			Array.prototype.splice.apply(this.state.posts, [results.start, results.end].concat(data));
