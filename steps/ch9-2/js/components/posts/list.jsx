@@ -1,4 +1,5 @@
-import React       from 'react/addons';
+import React       from 'react';
+import ReactDOM    from 'react-dom';
 import Reflux      from 'reflux';
 
 import Config      from 'appRoot/appConfig';
@@ -22,7 +23,7 @@ export default React.createClass({
 		this.getNextPage();
 	},
 	componentDidMount: function () {
-		var ele = React.findDOMNode(this).parentNode
+		var ele = ReactDOM.findDOMNode(this).parentNode
 		,   style
 		;
 		while (ele) {

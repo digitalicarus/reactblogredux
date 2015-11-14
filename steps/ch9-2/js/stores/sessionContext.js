@@ -23,8 +23,7 @@ export default Reflux.createStore({
 				this.trigger(this.context);
 				action.completed();
 
-				console.log("SETTING COOKIE", JSON.stringify(this.context), Cookie.setItem);
-
+				//console.log("SETTING COOKIE", JSON.stringify(this.context), Cookie.setItem);
 				Cookie.setItem('session', JSON.stringify(this.context));
 			} else {
 				action.failed();

@@ -1,7 +1,10 @@
 "use strict";
 
 import React     from 'react';
-import Router    from 'react-router';
+import ReactDom  from 'react-dom';
+import { Router, Route, IndexRoute } from 'react-router';
+
+import Reflux    from 'reflux';
 
 import CSS       from '../css/app.less';
 
@@ -17,13 +20,6 @@ import UserList  from 'appRoot/views/users/list';
 import UserView  from 'appRoot/views/users/view';
 import UserEdit  from 'appRoot/views/users/edit';
 
-let RouteHandler  = Router.RouteHandler
-,   Route         = Router.Route
-,   NotFoundRoute = Router.NotFoundRoute
-,   DefaultRoute  = Router.DefaultRoute
-,   Link          = Router.Link
-;
-
 // Components must be uppercase - regular DOM is lowercase
 // https://facebook.github.io/react/docs/jsx-in-depth.html#html-tags-vs.-react-components
 let AppLayout = React.createClass({
@@ -32,7 +28,7 @@ let AppLayout = React.createClass({
 			<div className="app-container">
 				<AppHeader />
 				<main>
-					<RouteHandler { ...this.props } />
+					{React.cloneElement(this.props.children, this.props)}
 				</main>
 			</div>
 		);
@@ -40,62 +36,47 @@ let AppLayout = React.createClass({
 });
 
 let routes = (
-    <Route path="/" handler={ AppLayout }>
+    <Route path="/" component={ AppLayout }>
+		<IndexRoute component={ PostList } />
         <Route 
-			name="list-posts"
 			path="posts/:pageNum/?" 
-			handler={ PostList } 
+			component={ PostList } 
 			ignoreScrollBehavior 
 		/>
 		<Route
-			name="create-post"
-			path="/post/create"
-			handler={ PostEdit }
+			path="/posts/create"
+			component={ PostEdit }
 		/>
 		<Route 
-			name="edit-post" 
-			path="/post/:postId/edit"
-			handler={ PostEdit } 
+			path="/posts/:postId/edit"
+			component={ PostEdit } 
 		/>
         <Route 
-			name="view-post"
-			path="post/:postId"
-			handler={ PostView } 
+			path="posts/:postId"
+			component={ PostView } 
 		/>
 		<Route 
-			name="list-users"
 			path="/users" 
-			handler={ UserList } 
+			component={ UserList } 
 		/>
 		<Route
-			name="create-user"
 			path="/users/create"
-			handler={ UserEdit }
+			component={ UserEdit }
 		/>
 		<Route 
-			name="view-user"
 			path="/users/:userId" 
-			handler={ UserView } 
+			component={ UserView } 
 		/>
 		<Route 
-			name="edit-user"
 			path="/users/:userId/edit" 
-			handler={ UserEdit }
+			component={ UserEdit }
 		/>
 		<Route 
-			name="login"
 			path="/login" 
-			handler={ Login }
+			component={ Login }
 		/>
-		<DefaultRoute handler={ PostList } />
-		<NotFoundRoute handler={ PostList } />
+		<Route path="*" component={ PostList } />
     </Route>
 );
 
-Router.run(routes, function(Handler, state) {
-	// you can name the params in the handler what you want as an attr 
-	// routeParams={ state.params }
-	// but the handler will automatically receive the state.params 
-	// as a prop called 'params'
-    React.render(<Handler />, document.body);
-});
+ReactDom.render(<Router>{routes}</Router>, document.getElementById('app'));

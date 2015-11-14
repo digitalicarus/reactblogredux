@@ -1,13 +1,13 @@
 import React   from 'react';
 import Reflux  from 'reflux';
-import Router  from 'react-router';
+import { Router, History }  from 'react-router';
 
 import BasicInput   from 'appRoot/components/basicInput';
 import Actions      from 'appRoot/actions';
 
 export default React.createClass({
 	mixins: [
-		Router.Navigation
+		History
 	],
 	getInitialState: function () { return {}; },
 	logIn: function (e) {
@@ -20,14 +20,15 @@ export default React.createClass({
 			});
 		e.preventDefault(); 
 		e.stopPropagation(); 
+				debugger;
 
 		Actions.login(detail.username, detail.password)
 			.then(function () {
-				console.log("SUCCESS", arguments);
-				this.transitionTo('/', { pageNum: 1 });
+				//console.log("SUCCESS", arguments);
+				this.history.pushState('', '/', { pageNum: 1 });
 			}.bind(this))
 			['catch'](function () {
-				console.log("ERROR", arguments);
+				//console.log("ERROR", arguments);
 				this.setState({'loginError': 'bad username or password'});
 			}.bind(this))
 			;

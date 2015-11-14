@@ -1,3 +1,5 @@
+import ReactDOM from 'react-dom';
+
 /**
  *  returns the failed constraints { errors: [] } or true if valid
  *  constraints are a map of supported constraint names and values
@@ -69,8 +71,8 @@ export var formMixins = {
 	getInputEle: function (ref) {
 		if (!this.isMounted()) { return; }
 		return this.refs[ref] ? 
-			this.refs[ref].getDOMNode().querySelector('input') : 
-			this.getDOMNode().querySelector('[name='+ref+'] input');
+			ReactDOM.findDOMNode(this.refs[ref]).querySelector('input') : 
+			ReactDOM.findDOMNode(this).querySelector('[name='+ref+'] input');
 	},
 	validateField: function (fieldName, constraintOverride) {
 		let fieldVal = this.getInputEle(fieldName).value
