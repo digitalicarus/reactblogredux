@@ -82,10 +82,10 @@
     },
     {
       "title": "So, I had this amazing Reuben ",
-      "body": "<div>Hello World!</div><div><b>This</b> is my story...</div><div><br></div>",
+      "body": "<div>Hello World!</div><div><b>This</b> is my story...</div><div>!!!!</div>",
       "user": 1,
-      "date": 1440132206613,
-      "summary": "Hello World!\nThis is my story...\n\n",
+      "date": 1447571639576,
+      "summary": "Hello World!\nThis is my story...\n!!!!\n",
       "id": 13
     }
   ]

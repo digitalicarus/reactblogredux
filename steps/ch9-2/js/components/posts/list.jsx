@@ -1,14 +1,11 @@
+"use strict";
+
 import React       from 'react';
 import ReactDOM    from 'react-dom';
-import Reflux      from 'reflux';
-
 import Config      from 'appRoot/appConfig';
-
 import PostStore   from 'appRoot/stores/posts';
 import SearchStore from 'appRoot/stores/search';
-
 import PostView    from 'appRoot/views/posts/view';
-
 import Loader      from 'appRoot/components/loader';
  
 export default React.createClass({

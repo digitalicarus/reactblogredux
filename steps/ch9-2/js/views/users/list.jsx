@@ -1,9 +1,9 @@
+"use strict";
+
 import React     from 'react';
 import Reflux    from 'reflux';
-import { Link }       from 'react-router';
-
+import { Link }  from 'react-router';
 import UserStore from 'appRoot/stores/users';
-
 import UserView  from 'appRoot/components/users/view';
 
 export default React.createClass({

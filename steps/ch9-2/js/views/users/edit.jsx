@@ -1,13 +1,12 @@
-import React     from 'react'; // react with addons
-import update    from 'react-addons-update';
-import Reflux    from 'reflux';
-import { History } from 'react-router';
+"use strict";
 
+import React        from 'react';
+import { History }  from 'react-router';
+import Reflux       from 'reflux';
+import update       from 'react-addons-update';
 import BasicInput   from 'appRoot/components/basicInput';
 import Actions      from 'appRoot/actions';
 import UserStore    from 'appRoot/stores/users';
-
-// use {symbolA, symbolB} notation to import multiple items from a file with multiple exports
 import {formMixins} from 'appRoot/mixins/utility';
 
 export default React.createClass({

@@ -1,6 +1,7 @@
+"use strict";
+
 import Reflux  from 'reflux';
 import Actions from 'appRoot/actions';
-import Router  from 'react-router';
 
 export default Reflux.createStore({
 	listenables: Actions,

@@ -1,12 +1,10 @@
-import React       from 'react/addons';
-import Reflux      from 'reflux';
+"use strict";
 
+import React       from 'react';
+import ReactDOM    from 'react-dom';
 import Config      from 'appRoot/appConfig';
-
 import PostStore   from 'appRoot/stores/posts';
-
 import PostView    from 'appRoot/views/posts/view';
-
 import Loader      from 'appRoot/components/loader';
 
 export default React.createClass({
@@ -20,7 +18,7 @@ export default React.createClass({
 		this.getNextPage();
 	},
 	componentDidMount: function () {
-		var ele = React.findDOMNode(this).parentNode
+		var ele = ReactDOM.findDOMNode(this).parentNode
 		,   style
 		;
 		while (ele) {
@@ -61,7 +59,7 @@ export default React.createClass({
 		).then(function (results) {
 			var data = results.results;
 
-			// make sure we put the data where it goes.
+			// make sure we put the data in the correct location in the array
 			// if many results resolved at once trust the request data for start and end
 			// instead of some internal state
 			Array.prototype.splice.apply(this.state.posts, [results.start, results.end].concat(data));

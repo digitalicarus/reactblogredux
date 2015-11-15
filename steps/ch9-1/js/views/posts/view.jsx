@@ -1,21 +1,17 @@
+"use strict";
+
 import React       from 'react';
 import Reflux      from 'reflux';
-import Router      from 'react-router';
+import { Link }    from 'react-router';
 import ClassNames  from 'classnames';
 import Moment      from 'moment';
-
 import Actions     from 'appRoot/actions';
-
 import PostStore   from 'appRoot/stores/posts';
 import UserStore   from 'appRoot/stores/users';
-
 import Session     from 'appRoot/stores/sessionContext';
-
 import Loader      from 'appRoot/components/loader';
 
-let dateFormat    = 'MM/DD/YYYY HH:mm:ss'
-,   Link          = Router.Link
-;
+let dateFormat    = 'MM/DD/YYYY HH:mm:ss';
  
 export default React.createClass({
 	mixins: [
@@ -79,11 +75,11 @@ export default React.createClass({
 				</aside>
 				<summary>{post.summary}</summary>
 				&nbsp;
-				<Link to="view-post" params={{ postId: post.id }}>read more</Link> 
+				<Link to={`/posts/${post.id}`}>read more</Link> 
 				{
 					user.id === this.state.session.id ? (
 						<div>
-							<Link to="edit-post" params={{ postId: post.id }}>
+							<Link to={`/posts/${post.id}/edit`}>
 								<button>edit post</button>
 							</Link>
 						</div>

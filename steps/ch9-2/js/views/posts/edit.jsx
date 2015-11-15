@@ -1,16 +1,16 @@
-import React     from 'react';
-import update    from 'react-addons-update';
-import { History }    from 'react-router';
-import Reflux    from 'reflux';
-import Quill     from 'quill';
-import Moment    from 'moment';
+"use strict";
 
-import Config     from 'appRoot/appConfig';
-import Actions    from 'appRoot/actions';
-import BasicInput from 'appRoot/components/basicInput';
-import Loader     from 'appRoot/components/loader';
-import Session    from 'appRoot/stores/sessionContext';
-
+import React        from 'react';
+import { History }  from 'react-router';
+import update       from 'react-addons-update';
+import Reflux       from 'reflux';
+import Quill        from 'quill';
+import Moment       from 'moment';
+import Config       from 'appRoot/appConfig';
+import Actions      from 'appRoot/actions';
+import BasicInput   from 'appRoot/components/basicInput';
+import Loader       from 'appRoot/components/loader';
+import Session      from 'appRoot/stores/sessionContext';
 import {formMixins} from 'appRoot/mixins/utility';
 
 export default React.createClass({
@@ -89,8 +89,7 @@ export default React.createClass({
 			}, this.postId)
 			.then(function (result) {
 				// go to newly created entry
-				//this.transitionTo('view-post', {postId: result.body.id});
-				this.history.pushState('', `/posts/$(result.body.id}`);
+				this.history.pushState('', `/posts/${result.body.id}`);
 			}.bind(this))
 			;
 		}

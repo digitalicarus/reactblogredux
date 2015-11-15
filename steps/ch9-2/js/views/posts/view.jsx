@@ -1,21 +1,17 @@
-import React            from 'react';
-import Reflux           from 'reflux';
-import { Link } from 'react-router';
+"use strict";
 
-import ClassNames  from 'classnames';
-import Moment      from 'moment';
+import React      from 'react';
+import Reflux     from 'reflux';
+import { Link }   from 'react-router';
+import ClassNames from 'classnames';
+import Moment     from 'moment';
+import Actions    from 'appRoot/actions';
+import PostStore  from 'appRoot/stores/posts';
+import UserStore  from 'appRoot/stores/users';
+import Session    from 'appRoot/stores/sessionContext';
+import Loader     from 'appRoot/components/loader';
 
-import Actions     from 'appRoot/actions';
-
-import PostStore   from 'appRoot/stores/posts';
-import UserStore   from 'appRoot/stores/users';
-
-import Session     from 'appRoot/stores/sessionContext';
-
-import Loader      from 'appRoot/components/loader';
-
-let dateFormat    = 'MM/DD/YYYY HH:mm:ss'
-;
+let dateFormat    = 'MM/DD/YYYY HH:mm:ss';
  
 export default React.createClass({
 	mixins: [

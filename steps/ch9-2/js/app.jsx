@@ -3,19 +3,12 @@
 import React     from 'react';
 import ReactDom  from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
-
-import Reflux    from 'reflux';
-
 import CSS       from '../css/app.less';
-
 import AppHeader from 'appRoot/views/appHeader';
-
 import Login     from 'appRoot/views/login';
-
 import PostList  from 'appRoot/views/posts/list';
 import PostView  from 'appRoot/views/posts/view';
 import PostEdit  from 'appRoot/views/posts/edit';
-
 import UserList  from 'appRoot/views/users/list';
 import UserView  from 'appRoot/views/users/view';
 import UserEdit  from 'appRoot/views/users/edit';

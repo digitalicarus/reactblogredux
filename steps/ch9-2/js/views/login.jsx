@@ -1,7 +1,7 @@
-import React   from 'react';
-import Reflux  from 'reflux';
-import { History }  from 'react-router';
+"use strict";
 
+import React   from 'react';
+import { History }  from 'react-router';
 import BasicInput   from 'appRoot/components/basicInput';
 import Actions      from 'appRoot/actions';
 
@@ -24,7 +24,7 @@ export default React.createClass({
 		Actions.login(detail.username, detail.password)
 			.then(function () {
 				//console.log("SUCCESS", arguments);
-				this.history.pushState('', '/', { pageNum: 1 });
+				this.history.pushState('', '/');
 			}.bind(this))
 			['catch'](function () {
 				//console.log("ERROR", arguments);

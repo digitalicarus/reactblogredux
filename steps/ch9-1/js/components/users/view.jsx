@@ -1,3 +1,5 @@
+"use strict";
+
 import React      from 'react';
 import Reflux     from 'reflux';
 import Classnames from 'classnames';
@@ -21,8 +23,8 @@ export default React.createClass({
 		// you must have a root element!
 		return user ? (
 			<div className={Classnames({
-						'user': true,
-						'small': this.props.small
+					'user': true,
+					'small': this.props.small
 				})}>
 				<img className={Classnames({
 						'profile-img': true,

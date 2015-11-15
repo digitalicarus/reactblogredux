@@ -1,11 +1,10 @@
 "use strict";
 
-import React        from 'react';
-import Reflux       from 'reflux';
-import { Link, History }       from 'react-router';
-
-import Actions      from 'appRoot/actions';
-import SessionStore from 'appRoot/stores/sessionContext';
+import React             from 'react';
+import Reflux            from 'reflux';
+import { Link, History } from 'react-router';
+import Actions           from 'appRoot/actions';
+import SessionStore      from 'appRoot/stores/sessionContext';
  
 export default React.createClass({
 	mixins: [
@@ -14,8 +13,7 @@ export default React.createClass({
 	],
 	logOut: function () {
 		Actions.logOut();
-		// from the navigation mixin
-		this.history.pushState('/');
+		this.history.pushState('', '/');
 	},
 	search: function () {
 		var searchVal = this.refs.search.value;
@@ -34,7 +32,7 @@ export default React.createClass({
 						onChange={this.search} />
 						{
 							this.state.session.loggedIn ? 
-								(<Link to="/post/create">
+								(<Link to="/posts/create">
 									Hello {this.state.session.username}, write something!
 								</Link>) : 
 								<Link to="/users/create">Join</Link>
