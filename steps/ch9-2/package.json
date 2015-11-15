@@ -1,13 +1,14 @@
 {
   "name": "reaction",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Mastering React multi user blog example application",
+  "repository": "github.com",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --progress --color --watch & json-server db/db.json"
   },
-  "author": "",
+  "author": "Adam Horton",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "react-hot-loader": "^1.3.0",
