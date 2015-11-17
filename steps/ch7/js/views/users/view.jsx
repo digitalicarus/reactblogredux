@@ -1,6 +1,6 @@
-import React     from 'react';
-import Reflux    from 'reflux';
+"use strict";
 
+import React     from 'react';
 import UserView  from 'appRoot/components/users/view';
        
 export default React.createClass({

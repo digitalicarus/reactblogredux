@@ -1,23 +1,19 @@
 "use strict";
 
-import React        from 'react';
-import Reflux       from 'reflux';
-import Router       from 'react-router';
-
-import Actions      from 'appRoot/actions';
-import SessionStore from 'appRoot/stores/sessionContext';
+import React             from 'react';
+import Reflux            from 'reflux';
+import { Link, History } from 'react-router';
+import Actions           from 'appRoot/actions';
+import SessionStore      from 'appRoot/stores/sessionContext';
  
-let Link = Router.Link;
-
 export default React.createClass({
 	mixins: [
 		Reflux.connect(SessionStore, 'session'),
-		Router.Navigation
+		History
 	],
 	logOut: function () {
 		Actions.logOut();
-		// from the navigation mixin
-		this.transitionTo('/');
+		this.history.pushState('', '/');
 	},
 	render: function () {
 		return (
@@ -26,15 +22,15 @@ export default React.createClass({
 				<section className="account-ctrl">
 					{
 						this.state.session.loggedIn ? 
-							(<Link to="create-post">
+							(<Link to="/posts/create">
 								Hello {this.state.session.username}, write something!
 							</Link>) : 
-							<Link to="create-user">Join</Link>
+							<Link to="/users/create">Join</Link>
 					}
 					{
 						this.state.session.loggedIn ? 
 							<a onClick={this.logOut}>Log Out</a> :
-							<Link to="login">Log In</Link> 
+							<Link to="/login">Log In</Link> 
 					}
 				</section>
 			</header> 

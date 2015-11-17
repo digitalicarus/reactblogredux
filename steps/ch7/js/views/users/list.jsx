@@ -1,12 +1,10 @@
+"use strict";
+
 import React     from 'react';
 import Reflux    from 'reflux';
-import Router    from 'react-router';
-
+import { Link }  from 'react-router';
 import UserStore from 'appRoot/stores/users';
-
 import UserView  from 'appRoot/components/users/view';
-
-let Link = Router.Link;
  
 export default React.createClass({
 	mixins: [
@@ -19,7 +17,7 @@ export default React.createClass({
 					this.state.users.map(function (v) {
 						return (
 							<li key={v.id}>
-								<Link to="view-user" params={{ userId: v.id }}>
+								<Link to={`/users/${v.id}`}>
 									<UserView userId={v.id} small={true} />
 								</Link>
 							</li>
