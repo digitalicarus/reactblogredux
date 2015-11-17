@@ -1,13 +1,14 @@
-import React   from 'react';
-import Reflux  from 'reflux';
-import Router  from 'react-router';
+"use strict";
+
+import React       from 'react';
+import { History } from 'react-router';
 
 export default React.createClass({
 	mixins: [
-		Router.Navigation
+		History
 	],
 	logIn: function (e) {
-		this.transitionTo('/');
+		this.history.pushState('', '/');
 	},
 	render: function () {
 		return (

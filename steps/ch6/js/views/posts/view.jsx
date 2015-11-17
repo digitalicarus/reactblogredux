@@ -1,6 +1,6 @@
-import React   from 'react';
-import Reflux  from 'reflux';
-import Router  from 'react-router';
+"use strict";
+
+import React from 'react';
 
 export default React.createClass({
 	render: function () {
