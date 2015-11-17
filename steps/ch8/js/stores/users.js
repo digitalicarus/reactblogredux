@@ -1,8 +1,9 @@
-import Reflux  from 'reflux';
-import Actions from 'appRoot/actions';
-import Request from 'superagent';
-import Config  from 'appRoot/appConfig';
+"use strict";
 
+import Reflux         from 'reflux';
+import Actions        from 'appRoot/actions';
+import Request        from 'superagent';
+import Config         from 'appRoot/appConfig';
 import SessionContext from 'appRoot/stores/sessionContext';
 
 export default Reflux.createStore({
@@ -49,7 +50,7 @@ export default Reflux.createStore({
 			; 
 	},
 	onCreateUser: function (details) {
-		console.log("create user action", this);
+		//console.log("create user action", this);
 		this.modifyUser('post', details, Actions.createUser);
 	},
 	onEditUser: function (details) {

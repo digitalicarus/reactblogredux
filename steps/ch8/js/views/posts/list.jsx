@@ -1,8 +1,6 @@
-import React      from 'react';
-import Reflux     from 'reflux';
-import Router     from 'react-router';
-import Moment     from 'moment';
+"use strict";
 
+import React      from 'react';
 import UserList   from 'appRoot/views/users/list';
 import PostList   from 'appRoot/components/posts/list';
  

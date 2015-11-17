@@ -1,9 +1,9 @@
-import React       from 'react/addons';
-import Reflux      from 'reflux';
+"use strict";
 
-import PostStore   from 'appRoot/stores/posts';
-
-import PostView    from 'appRoot/views/posts/view';
+import React     from 'react';
+import Reflux    from 'reflux';
+import PostStore from 'appRoot/stores/posts';
+import PostView  from 'appRoot/views/posts/view';
 
 export default React.createClass({
 	mixins: [

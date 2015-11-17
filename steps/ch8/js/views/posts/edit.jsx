@@ -1,23 +1,22 @@
-import React     from 'react/addons';
-import Router    from 'react-router';
-import Reflux    from 'reflux';
-import Quill     from 'quill';
-import Moment    from 'moment';
+"use strict";
 
-import Config     from 'appRoot/appConfig';
-import Actions    from 'appRoot/actions';
-import BasicInput from 'appRoot/components/basicInput';
-import Loader     from 'appRoot/components/loader';
-import Session    from 'appRoot/stores/sessionContext';
-
+import React        from 'react';
+import { History }  from 'react-router';
+import update       from 'react-addons-update';
+import Reflux       from 'reflux';
+import Quill        from 'quill';
+import Moment       from 'moment';
+import Config       from 'appRoot/appConfig';
+import Actions      from 'appRoot/actions';
+import BasicInput   from 'appRoot/components/basicInput';
+import Loader       from 'appRoot/components/loader';
+import Session      from 'appRoot/stores/sessionContext';
 import {formMixins} from 'appRoot/mixins/utility';
-
-let update = React.addons.update;
 
 export default React.createClass({
 	mixins: [
 		Reflux.connect(Session, 'session'),
-		Router.Navigation,
+		History,
 		formMixins
 	],
 	getInitialState: function () {
@@ -40,7 +39,7 @@ export default React.createClass({
 			Actions.getPost(this.postId)
 				.then(function (post) {
 					setTimeout(function () {
-						console.log("POST", post);
+						//console.log("POST", post);
 						this.setState({ post: post, loading: false });
 						this.initQuill(post.body);
 					}.bind(this), 2000);
@@ -56,13 +55,13 @@ export default React.createClass({
 	},
 	initQuill: function (html) {
 		if (!this.quill) {
-			this.quill = new Quill(this.refs.editor.getDOMNode(), { 
+			this.quill = new Quill(this.refs.editor, { 
 				theme: 'snow', 
 				modules: {
 					'link-tooltip': true,
 					'image-tooltip': true,
 					'toolbar': {
-						container: this.refs.toolbar.getDOMNode()
+						container: this.refs.toolbar
 					}
 				}
 			}); 
@@ -90,7 +89,7 @@ export default React.createClass({
 			}, this.postId)
 			.then(function (result) {
 				// go to newly created entry
-				this.transitionTo('view-post', {postId: result.body.id});
+				this.history.pushState('', `/posts/${result.body.id}`);
 			}.bind(this))
 			;
 		}

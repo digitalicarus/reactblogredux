@@ -1,8 +1,7 @@
+"use strict";
+
 import React     from 'react';
-import Reflux    from 'reflux';
-
 import UserView  from 'appRoot/components/users/view';
-
 import PostList  from 'appRoot/components/posts/list';
        
 export default React.createClass({

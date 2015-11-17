@@ -58,7 +58,7 @@ export default Reflux.createStore({
 							return res.body.id == post.id;
 						});
 
-						console.log("POST IDX", existingPostIdx);
+						//console.log("POST IDX", existingPostIdx);
 						if (existingPostIdx > -1) {
 							this.posts[existingPostIdx] = res.body;
 						} else {

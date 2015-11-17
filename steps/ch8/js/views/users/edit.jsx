@@ -1,20 +1,18 @@
-import React     from 'react/addons'; // react with addons
-import Reflux    from 'reflux';
-import Router    from 'react-router';
+"use strict";
 
+import React        from 'react';
+import { History }  from 'react-router';
+import Reflux       from 'reflux';
+import update       from 'react-addons-update';
 import BasicInput   from 'appRoot/components/basicInput';
 import Actions      from 'appRoot/actions';
 import UserStore    from 'appRoot/stores/users';
-
-// use {symbolA, symbolB} notation to import multiple items from a file with multiple exports
 import {formMixins} from 'appRoot/mixins/utility';
-
-let update = React.addons.update;
 
 export default React.createClass({
 	mixins: [
 		Reflux.connect(UserStore, 'users'),
-		Router.Navigation,
+		History,
 		formMixins
 	],
 	getInitialState: function () {
@@ -47,7 +45,7 @@ export default React.createClass({
 
 		// node list isn't necessarily an array but can be iterable
 		Array.prototype.forEach.call(
-			this.refs.form.getDOMNode().querySelectorAll('input'),
+			this.refs.form.querySelectorAll('input'),
 			function (v) {
 				let fieldName = v.getAttribute('name')
 				,   errors
@@ -76,7 +74,7 @@ export default React.createClass({
 			Actions.createUser(detail)
 				.then(function (result) {
 					// go to newly created entry
-					this.transitionTo('view-user', {userId: result.id});
+					this.history.pushState('', `/users/${result.id}`);
 				}.bind(this))
 			; 
 		}

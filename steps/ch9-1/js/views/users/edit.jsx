@@ -74,7 +74,7 @@ export default React.createClass({
 			Actions.createUser(detail)
 				.then(function (result) {
 					// go to newly created entry
-					this.history.pushState('', `/users/$(result.id}`);
+					this.history.pushState('', `/users/${result.id}`);
 				}.bind(this))
 			; 
 		}
