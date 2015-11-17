@@ -2,11 +2,11 @@ var path    = require('path')
 ,   webpack = require('webpack')
 ;
 
-// lot's of help from https://github.com/petehunt/webpack-howto
 module.exports = {
 	entry: [
 		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
 		'webpack/hot/only-dev-server',
+		'babel-polyfill',
 		'./js/app' // Your appʼs entry point
     ],
     output: {
@@ -37,16 +37,17 @@ module.exports = {
 	},
     module: {
         loaders: [
-			{ test: /\.less$/,      loader: 'style-loader!css-loader!!autoprefixer?browsers=last 2 version!less-loader' },
+			{ test: /\.less$/,      loader: 'style-loader!css-loader!autoprefixer?browsers=last 2 version!less-loader' },
 			{ test: /\.css$/,       loader: 'style-loader!css-loader' },
 			{ test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}, // inline base64 URLs for <=8k images, direct URLs for the rest
 			{ 
 				test: /\.jsx?$/, 
 				include: [
-					path.join(__dirname, 'js') // files to apply this loader to
+					path.join(__dirname, 'js'), // files to apply this loader to
+					path.join(__dirname, 'node_modules/reflux-core')
 				], 
-				exclude: '/node-modules/', // don't transform all our node modules! 
-				loaders: ['react-hot', 'babel?optional=runtime'] // loaders process from right to left
+				// http://jamesknelson.com/using-es6-in-the-browser-with-babel-6-and-webpack/
+				loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015', 'reflux-wrap-loader'] // loaders process from right to left
 			}
         ]
     }
